@@ -151,36 +151,35 @@
   </style>
 </head>
 <body>
-   <header>
+  <header>
     <img src="logo.jpg" alt="もみ徳ロゴ">
     <h1>もみ徳｜口コミアシスタント</h1>
   </header>
   <div class="header-sub">トップに戻る → <a href="index.html">こちら</a></div>
   <div class="assistant-icon">
-    <img src="male.png" alt="男性アイコン">
+    <img src="female.png" alt="女性アイコン">
   </div>
   <div class="assistant-message">
     こころに浮かんだ気持ちを、やさしい言葉に紡ぎます。
   </div>
-  <div class="info-box">
+  <div class="select-box">
     <p>以下のリンクから、Googleの口コミページにアクセスして直接ご記入いただけます。</p>
     <p>
       <a href="https://www.google.co.jp/search?q=もみ徳姪浜店+クチコミ">PC・Androidはこちら</a><br>
       <a href="https://www.google.com/gasearch?q=もみ徳姪浜店+レビュー&source=sh/x/gs/m2/5#ebo=1">iPhoneはこちら（※先に星を選択してください）</a>
     </p>
   </div>
-  <div class="support-box">
-    <img src="icon.png" alt="サポートアイコン">
-    <span>口コミを書くのが苦手な方は、以下のサポート機能をご活用ください。</span>
+  <div class="select-box" style="background: var(--light-bg);">
+    <p><img src="icon.png" alt="サポートアイコン" style="width: 20px; vertical-align: middle; margin-right: 0.4em;">口コミを書くのが苦手な方は、以下のサポート機能をご活用ください。</p>
   </div>
   <div class="select-box">
     <h2>担当スタッフを選んでください</h2>
-    <div class="staff-options">
-      <label class="staff-option"><input type="radio" name="therapist" value="横田"> 横田</label>
-      <label class="staff-option"><input type="radio" name="therapist" value="桜井"> 桜井</label>
-      <label class="staff-option"><input type="radio" name="therapist" value="米倉"> 米倉</label>
-      <label class="staff-option"><input type="radio" name="therapist" value="木田"> 木田</label>
-      <label class="staff-option"><input type="radio" name="therapist" value="不明"> 名前がわからない</label>
+    <div class="checkbox-grid">
+      <label class="checkbox-item"><input type="radio" name="therapist" value="横田"> 横田</label>
+      <label class="checkbox-item"><input type="radio" name="therapist" value="桜井"> 桜井</label>
+      <label class="checkbox-item"><input type="radio" name="therapist" value="米倉"> 米倉</label>
+      <label class="checkbox-item"><input type="radio" name="therapist" value="木田"> 木田</label>
+      <label class="checkbox-item"><input type="radio" name="therapist" value="不明"> 名前がわからない</label>
     </div>
   </div>
   <div class="select-box">
@@ -206,29 +205,25 @@
     </div>
   </div>
   <div class="select-box">
-    <h2>こちらをご利用ください</h2>
-    <textarea id="free-input" placeholder="ご自由にご記入ください"></textarea>
+    <h2>こちらの欄もご利用ください</h2>
+    <textarea id="free-input" placeholder="ご自由にお書きください"></textarea>
   </div>
   <div class="select-box">
     <button class="button-orange" onclick="generateReview()">口コミを作成する</button>
     <button class="button-orange" onclick="copyReview()">コピーする</button>
     <div id="output"></div>
   </div>
-  <div class="footer-links">
-    <p>作成した口コミを以下のリンクから投稿できます：</p>
-    <p>
-      <a href="https://www.google.co.jp/search?q=もみ徳姪浜店+クチコミ">PC・Androidはこちら</a><br>
-      <a href="https://www.google.com/gasearch?q=もみ徳姪浜店+レビュー&source=sh/x/gs/m2/5#ebo=1">iPhoneはこちら（※先に星を選択してください）</a>
-    </p>
+  <div style="font-size: 0.75rem; color: #888; margin-top: 2em;">
+    ※このツールは「もみ徳」専用に制作された口コミ支援ツールです。<br>
+    無断転載・複製・再配布を固く禁止します。
   </div>
   <script>
-    const gender = "male";
+    const gender = "female";
     function generateReview() {
       const therapist = document.querySelector('input[name="therapist"]:checked')?.value || "不明";
       const tone = document.querySelector('input[name="tone"]:checked')?.value;
       const selected = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
       const freeText = document.getElementById("free-input").value;
-
       const shuffled = selected.sort(() => 0.5 - Math.random());
       let review = buildReview(gender, tone, shuffled, therapist);
       if (freeText.trim()) {
@@ -251,6 +246,6 @@
       document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
     }
   </script>
-
 </body>
 </html>
+
