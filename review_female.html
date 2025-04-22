@@ -172,16 +172,14 @@
   <div class="select-box" style="background: var(--light-bg);">
     <p><img src="icon.png" alt="サポートアイコン" style="width: 20px; vertical-align: middle; margin-right: 0.4em;">口コミを書くのが苦手な方は、以下のサポート機能をご活用ください。</p>
   </div>
- </div>
   <div class="select-box">
     <h2>担当スタッフを選んでください</h2>
-    <div class="checkbox-grid">
     <div class="staff-options">
-      <label class="staff-option"><input type="radio" name="therapist" value="横田"> 横田</label>
-      <label class="staff-option"><input type="radio" name="therapist" value="桜井"> 桜井</label>
-      <label class="staff-option"><input type="radio" name="therapist" value="米倉"> 米倉</label>
-      <label class="staff-option"><input type="radio" name="therapist" value="木田"> 木田</label>
-      <label class="staff-option"><input type="radio" name="therapist" value="不明"> 名前がわからない</label>
+      <label class="checkbox-item"><input type="radio" name="therapist" value="横田"> 横田</label>
+      <label class="checkbox-item"><input type="radio" name="therapist" value="桜井"> 桜井</label>
+      <label class="checkbox-item"><input type="radio" name="therapist" value="米倉"> 米倉</label>
+      <label class="checkbox-item"><input type="radio" name="therapist" value="木田"> 木田</label>
+      <label class="checkbox-item"><input type="radio" name="therapist" value="不明"> 名前がわからない</label>
     </div>
   </div>
   <div class="select-box">
@@ -229,7 +227,8 @@
       const shuffled = selected.sort(() => 0.5 - Math.random());
       let review = buildReview(gender, tone, shuffled, therapist);
       if (freeText.trim()) {
-        review += "\n" + freeText.trim();
+        review += "
+" + freeText.trim();
       }
       document.getElementById("output").textContent = review;
     }
@@ -250,4 +249,3 @@
   </script>
 </body>
 </html>
-
