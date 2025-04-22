@@ -85,6 +85,9 @@
       font-size: 1rem;
       display: flex;
       align-items: center;
+      justify-content: center;
+      min-width: 110px;
+      white-space: nowrap;
     }
     .checkbox-item input {
       margin-right: 0.5em;
@@ -142,11 +145,12 @@
       min-height: 4em;
     }
     .staff-options {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1em;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 0.8em;
       justify-content: center;
       margin-top: 1em;
+      flex-wrap: wrap;
     }
   </style>
 </head>
