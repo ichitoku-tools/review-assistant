@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>もみ徳｜口コミアシスタント</title>
+  <style>
+    :root {
+      --main-color: #ff8a65;
+      --accent-color: #f4511e;
+      --bg-color: #fffaf5;
+      --text-color: #444;
+      --light-bg: #fff9f2;
+      --border-color: #ffe0b2;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 1em;
+      text-align: center;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      margin-bottom: 1.5em;
+    }
+    header img {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+    }
+    header h1 {
+      font-size: 1.3rem;
+      color: var(--main-color);
+      margin: 0;
+    }
+    .intro-icon img {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      margin-bottom: 0.5em;
+    }
+    .message {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 1em;
+    }
+    .intro-box {
+      border: 3px double var(--border-color);
+      border-radius: 12px;
+      padding: 1.5em;
+      margin: 1em auto 2em;
+      background: #fff;
+      max-width: 520px;
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.8;
+      font-weight: 500;
+      position: relative;
+    }
+    .intro-box::before,
+    .intro-box::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border-color);
+    }
+    .intro-box::before {
+      top: 10px;
+      left: 10px;
+      border-right: none;
+      border-bottom: none;
+    }
+    .intro-box::after {
+      bottom: 10px;
+      right: 10px;
+      border-left: none;
+      border-top: none;
+    }
+    .icon-row {
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+      margin-bottom: 2em;
+      flex-wrap: wrap;
+    }
+    .icon-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.95rem;
+      color: var(--text-color);
+      transition: transform 0.3s ease;
+    }
+    .icon-button img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 0.5em;
+      transition: transform 0.3s ease;
+    }
+    .icon-button:hover img {
+      transform: scale(1.15);
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      margin-top: 2em;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      padding: 0.6em 1.2em;
+      border-radius: 8px;
+      background: var(--light-bg);
+      color: var(--accent-color);
+      border: 1px solid var(--accent-color);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.jpg" alt="もみ徳ロゴ">
+    <h1>もみ徳｜口コミアシスタント</h1>
+  </header>
+
+  <div class="intro-icon">
+    <img src="natural.png" alt="ガイドアイコン">
+  </div>
+  <div class="message">こころに浮かんだ気持ちを、やさしい言葉に紡ぎます。</div>
+
+  <div class="intro-box">
+    私はあなたの口コミアシスタントです。<br>
+    施術の感想を自然な文章にする<br>
+    お手伝いをいたします。<br>
+    まず、あなたの性別を選んでください。
+  </div>
+
+  <div class="icon-row">
+    <a class="icon-button" href="review_male.html">
+      <img src="male.png" alt="男性アイコン">
+      男性
+    </a>
+    <a class="icon-button" href="review_female.html">
+      <img src="female.png" alt="女性アイコン">
+      女性
+    </a>
+    <a class="icon-button" href="review_natural.html">
+      <img src="natural.png" alt="未選択アイコン">
+      選択しない
+    </a>
+  </div>
+
+  <div class="footer-links">
+    <a href="https://momitoku.main.jp/" target="_blank">もみ徳 公式サイト</a>
+    <a href="https://momitoku.main.jp/meinohama/index.html" target="_blank">姪浜店ページ</a>
+    <a href="app-guide.html">アプリ紹介ページへ</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アプリ紹介｜もみ徳</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+      background: #fffaf5;
+      color: #333;
+      padding: 1em;
+      text-align: center;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      margin-bottom: 1em;
+    }
+    header img {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+    }
+    header h1 {
+      font-size: 1.4rem;
+      color: #f57c00;
+      margin: 0;
+    }
+    .section {
+      max-width: 600px;
+      margin: 0 auto 2em;
+      background: #fff;
+      padding: 1em;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .section img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+    .highlight-box {
+      border: 2px solid #f57c00;
+      border-radius: 12px;
+      padding: 1em;
+      margin: 2em auto;
+      max-width: 600px;
+      background-color: #fff;
+    }
+    .highlight-box p {
+      line-height: 1.6;
+    }
+    .links a {
+      display: inline-block;
+      margin: 0.5em;
+      padding: 0.8em 1.2em;
+      width: 260px;
+      text-align: center;
+      background: #f57c00;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .links a.secondary {
+      background: white;
+      color: #f57c00;
+      border: 2px solid #f57c00;
+    }
+    .mock {
+      margin-bottom: 2em;
+    }
+    @media (max-width: 600px) {
+      header {
+        flex-direction: row;
+        justify-content: center;
+      }
+      header img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.jpg" alt="もみ徳ロゴ">
+    <h1>知らなきゃ損！アプリ会員の特典とは？</h1>
+  </header>
+
+  <div class="section">
+    <img src="app-mock-2.jpg" alt="アプリ画面と機能紹介" class="mock">
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>もみ徳の公式アプリ</strong>では、<br>
+    <strong>ネット予約・来店履歴の確認・ポイント管理</strong>など、<br>
+    便利な機能をご利用いただけます。</p>
+  </div>
+
+  <div class="section">
+    <img src="tokuten.jpg" alt="アプリ特典一覧">
+  </div>
+
+  <div class="section links">
+    <p>以下のリンクから、お使いのスマートフォンに合わせてアプリをダウンロードしてください。</p>
+    <a href="#">Androidアプリをダウンロード<br>（Google Play）</a>
+    <a href="#">iPhoneアプリをダウンロード<br>（App Store）</a>
+    <a href="index.html" class="secondary">トップページへ戻る</a>
+  </div>
+</body>
+</html>

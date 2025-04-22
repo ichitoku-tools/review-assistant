@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>もみ徳｜口コミアシスタント</title>
+  <script src="phrases.js"></script>
+  <style>
+    :root {
+      --main-color: #ffb74d;
+      --accent-color: #fb8c00;
+      --bg-color: #fffaf3;
+      --text-color: #333;
+      --light-bg: #fff3e0;
+      --border-color: #ffe0b2;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 1em;
+      text-align: center;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      margin-bottom: 0.5em;
+    }
+    header img {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+    }
+    header h1 {
+      font-size: 1.3rem;
+      color: var(--main-color);
+      margin: 0;
+    }
+    .header-sub {
+      font-size: 0.85rem;
+      color: #777;
+      margin-bottom: 1em;
+    }
+    .assistant-icon img {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+    }
+    .assistant-message {
+      margin: 0.5em 0 1.5em;
+      font-size: 1rem;
+      color: #666;
+    }
+    .info-box {
+      background: #fff;
+      padding: 1.2em 1.5em;
+      margin: 1.5em auto;
+      max-width: 640px;
+      border-radius: 16px;
+      border-left: 5px solid var(--main-color);
+      text-align: left;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .info-box a {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+    .support-box {
+      background: var(--light-bg);
+      padding: 1em 1.5em;
+      margin: 1.5em auto;
+      max-width: 640px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+    }
+    .support-box img {
+      width: 24px;
+      margin-right: 0.5em;
+    }
+    .select-box {
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      max-width: 640px;
+      margin: 2em auto;
+      padding: 1.2em 1.5em;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+    .staff-options {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1em;
+      margin-top: 1em;
+    }
+    .staff-option {
+      background: var(--light-bg);
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      padding: 0.6em 1em;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    .staff-option input {
+      margin-right: 0.5em;
+      transform: scale(1.3);
+    }
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1em;
+      justify-content: center;
+      margin-bottom: 1.5em;
+    }
+    .checkbox-item {
+      background: var(--light-bg);
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      padding: 0.6em 1em;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    .checkbox-item input {
+      margin-right: 0.5em;
+      transform: scale(1.3);
+    }
+    .tone-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1em;
+      max-width: 480px;
+      margin: 0 auto 1.5em;
+      justify-content: center;
+    }
+    .tone-option {
+      border: 2px solid var(--border-color);
+      background: var(--light-bg);
+      border-radius: 12px;
+      padding: 0.7em 1em;
+      font-size: 1rem;
+      text-align: left;
+    }
+    #free-input {
+      width: 100%;
+      max-width: 600px;
+      height: 80px;
+      padding: 0.7em;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      resize: vertical;
+    }
+    #output {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 1em;
+      border-radius: 12px;
+      white-space: pre-wrap;
+      margin-top: 1em;
+      max-width: 600px;
+      margin-inline: auto;
+      min-height: 4em;
+    }
+    .button-orange {
+      background: var(--main-color);
+      color: white;
+      border: none;
+      padding: 0.8em 1.5em;
+      border-radius: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 0.5em;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      transition: background 0.2s ease;
+    }
+    .button-orange:hover {
+      background: var(--accent-color);
+    }
+    .footer-links {
+      margin-top: 2em;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.jpg" alt="もみ徳ロゴ" />
+    <h1>もみ徳｜口コミアシスタント</h1>
+  </header>
+  <div class="header-sub">トップに戻る → <a href="index.html">こちら</a></div>
+
+  <div class="assistant-icon">
+    <img src="natural.png" alt="コンシェルジュアイコン" />
+  </div>
+  <div class="assistant-message">
+    こころに浮かんだ気持ちを、やさしい言葉に紡ぎます。
+  </div>
+
+  <div class="info-box">
+    <p>以下のリンクから、Googleの口コミページにアクセスして直接ご記入いただけます。</p>
+    <p>
+      <a href="https://www.google.co.jp/search?sca_esv=955177219d80cd60&q=もみ徳姪浜店+クチコミ">PC・Androidはこちら</a><br />
+      <a href="https://www.google.com/gasearch?q=もみ徳姪浜店 福岡市 レビュー&source=sh/x/gs/m2/5#ebo=1">iPhoneはこちら（※先に星を選択してください）</a>
+    </p>
+  </div>
+
+  <div class="support-box">
+    <img src="icon.png" alt="サポートアイコン" />
+    <span>口コミを書くのが苦手な方は、以下のサポート機能をご活用ください。</span>
+  </div>
+
+  <div class="select-box">
+    <h2>担当スタッフを選んでください</h2>
+    <div class="staff-options">
+      <label class="staff-option"><input type="radio" name="therapist" value="横田"> 横田</label>
+      <label class="staff-option"><input type="radio" name="therapist" value="桜井"> 桜井</label>
+      <label class="staff-option"><input type="radio" name="therapist" value="米倉"> 米倉</label>
+      <label class="staff-option"><input type="radio" name="therapist" value="木田"> 木田</label>
+      <label class="staff-option"><input type="radio" name="therapist" value="不明"> 名前がわからない</label>
+    </div>
+  </div>
+
+  <div class="select-box">
+    <h2>施術後に感じたこと</h2>
+    <div class="checkbox-grid">
+      <label class="checkbox-item"><input type="checkbox" value="コリに的確"> コリに的確</label>
+      <label class="checkbox-item"><input type="checkbox" value="力強い"> 力強い</label>
+      <label class="checkbox-item"><input type="checkbox" value="動作が楽に"> 動作が楽に</label>
+      <label class="checkbox-item"><input type="checkbox" value="スッキリ"> スッキリ</label>
+      <label class="checkbox-item"><input type="checkbox" value="丁寧な接客"> 丁寧な接客</label>
+      <label class="checkbox-item"><input type="checkbox" value="ワザが凄い"> ワザが凄い</label>
+    </div>
+    <button class="button-orange" onclick="selectAll()">すべて選択</button>
+    <button class="button-orange" onclick="deselectAll()" style="background:#ccc; color:#333;">選択を解除</button>
+  </div>
+
+  <div class="select-box">
+    <h2>口コミの口調を選んでください</h2>
+    <div class="tone-grid">
+      <label class="tone-option"><input type="radio" name="tone" value="ですます調" checked> ですます調</label>
+      <label class="tone-option"><input type="radio" name="tone" value="カジュアル"> カジュアル</label>
+      <label class="tone-option"><input type="radio" name="tone" value="フレンドリー"> フレンドリー</label>
+      <label class="tone-option"><input type="radio" name="tone" value="しっかり敬語"> しっかり敬語</label>
+    </div>
+  </div>
+
+  <div class="select-box">
+    <h2>ご自由にメッセージを追加したい方はこちら</h2>
+    <textarea id="free-input" placeholder="例：お店の雰囲気も落ち着いていて居心地がよかったです。"></textarea>
+  </div>
+
+  <div class="select-box">
+    <button class="button-orange" onclick="generateReview()">口コミを作成する</button>
+    <button class="button-orange" onclick="copyReview()">コピーする</button>
+    <div id="output"></div>
+  </div>
+
+  <div class="footer-links">
+    <p>作成した口コミを以下のリンクから投稿できます：</p>
+    <p>
+      <a href="https://www.google.co.jp/search?sca_esv=955177219d80cd60&q=もみ徳姪浜店+クチコミ">PC・Androidはこちら</a><br />
+      <a href="https://www.google.com/gasearch?q=もみ徳姪浜店 福岡市 レビュー&source=sh/x/gs/m2/5#ebo=1">iPhoneはこちら（※先に星を選択してください）</a>
+    </p>
+  </div>
+
+  <script>
+    const gender = "natural";
+    function generateReview() {
+      const therapist = document.querySelector('input[name="therapist"]:checked')?.value || "不明";
+      const tone = document.querySelector('input[name="tone"]:checked')?.value;
+      const selected = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
+      const shuffled = selected.sort(() => 0.5 - Math.random());
+      const freeText = document.getElementById("free-input")?.value;
+      let review = buildReview(gender, tone, shuffled, therapist);
+      if (freeText && freeText.trim()) {
+        review += "\n" + freeText.trim();
+      }
+      document.getElementById("output").textContent = review;
+    }
+
+    function copyReview() {
+      const reviewText = document.getElementById("output").textContent;
+      if (reviewText) {
+        navigator.clipboard.writeText(reviewText).then(() => {
+          alert("コピーしました！");
+        });
+      }
+    }
+
+    function selectAll() {
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
+    }
+
+    function deselectAll() {
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    }
+  </script>
+</body>
+</html>
