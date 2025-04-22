@@ -26,6 +26,8 @@
       margin: 0;
       padding: 1em;
       text-align: center;
+      word-break: break-word;
+      line-height: 1.6;
     }
     header {
       display: flex;
@@ -64,8 +66,9 @@
       border-radius: 16px;
       max-width: 640px;
       margin: 1.5em auto;
-      padding: 1.2em 1.5em;
+      padding: 1.5em 1.2em;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      word-break: break-word;
     }
     .checkbox-grid {
       display: grid;
@@ -142,6 +145,19 @@
       margin-inline: auto;
       min-height: 4em;
     }
+      .staff-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      justify-content: center;
+      margin-top: 1em;
+    }
+    @media (max-width: 480px) {
+      .staff-options {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -168,7 +184,7 @@
   </div>
   <div class="select-box">
     <h2>担当スタッフを選んでください</h2>
-    <div class="checkbox-grid">
+    <div class="staff-options">
       <label class="checkbox-item"><input type="radio" name="therapist" value="横田"> 横田</label>
       <label class="checkbox-item"><input type="radio" name="therapist" value="桜井"> 桜井</label>
       <label class="checkbox-item"><input type="radio" name="therapist" value="米倉"> 米倉</label>
