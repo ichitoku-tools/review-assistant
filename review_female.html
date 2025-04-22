@@ -238,16 +238,18 @@
   <script>
     const gender = "female";
     function generateReview() {
-      const therapist = document.querySelector('input[name="therapist"]:checked')?.value || "不明";
-      const tone = document.querySelector('input[name="tone"]:checked')?.value;
-      const selected = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
-      const freeText = document.getElementById("free-input").value;
-      const shuffled = selected.sort(() => 0.5 - Math.random());
-      let review = buildReview(gender, tone, shuffled, therapist);
-      if (freeText.trim()) {
-        review += "
+  const therapist = document.querySelector('input[name="therapist"]:checked')?.value || "不明";
+  const tone = document.querySelector('input[name="tone"]:checked')?.value;
+  const selected = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
+  const freeText = document.getElementById("free-input").value;
+  const shuffled = selected.sort(() => 0.5 - Math.random());
+  let review = buildReview(gender, tone, shuffled, therapist);
+  if (freeText.trim()) {
+    review += "
 " + freeText.trim();
-      }
+  }
+  document.getElementById("output").textContent = review;
+}
       document.getElementById("output").textContent = review;
     }
     function copyReview() {
