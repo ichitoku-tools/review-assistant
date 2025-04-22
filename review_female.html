@@ -151,6 +151,106 @@
   </style>
 </head>
 <body>
-  <!-- HTML構造は省略：既存コードと共通 -->
+   <header>
+    <img src="logo.jpg" alt="もみ徳ロゴ">
+    <h1>もみ徳｜口コミアシスタント</h1>
+  </header>
+  <div class="header-sub">トップに戻る → <a href="index.html">こちら</a></div>
+  <div class="assistant-icon">
+    <img src="male.png" alt="男性アイコン">
+  </div>
+  <div class="assistant-message">
+    こころに浮かんだ気持ちを、やさしい言葉に紡ぎます。
+  </div>
+  <div class="info-box">
+    <p>以下のリンクから、Googleの口コミページにアクセスして直接ご記入いただけます。</p>
+    <p>
+      <a href="https://www.google.co.jp/search?q=もみ徳姪浜店+クチコミ">PC・Androidはこちら</a><br>
+      <a href="https://www.google.com/gasearch?q=もみ徳姪浜店+レビュー&source=sh/x/gs/m2/5#ebo=1">iPhoneはこちら（※先に星を選択してください）</a>
+    </p>
+  </div>
+  <div class="support-box">
+    <img src="icon.png" alt="サポートアイコン">
+    <span>口コミを書くのが苦手な方は、以下のサポート機能をご活用ください。</span>
+  </div>
+  <div class="select-box">
+    <h2>担当スタッフを選んでください</h2>
+    <div class="staff-options">
+      <label class="staff-option"><input type="radio" name="therapist" value="横田"> 横田</label>
+      <label class="staff-option"><input type="radio" name="therapist" value="桜井"> 桜井</label>
+      <label class="staff-option"><input type="radio" name="therapist" value="米倉"> 米倉</label>
+      <label class="staff-option"><input type="radio" name="therapist" value="木田"> 木田</label>
+      <label class="staff-option"><input type="radio" name="therapist" value="不明"> 名前がわからない</label>
+    </div>
+  </div>
+  <div class="select-box">
+    <h2>施術後に感じたこと</h2>
+    <div class="checkbox-grid">
+      <label class="checkbox-item"><input type="checkbox" value="コリに的確">コリに的確</label>
+      <label class="checkbox-item"><input type="checkbox" value="力強い">力強い</label>
+      <label class="checkbox-item"><input type="checkbox" value="動作が楽に">動作が楽に</label>
+      <label class="checkbox-item"><input type="checkbox" value="スッキリ">スッキリ</label>
+      <label class="checkbox-item"><input type="checkbox" value="丁寧な接客">丁寧な接客</label>
+      <label class="checkbox-item"><input type="checkbox" value="ワザが凄い">ワザが凄い</label>
+    </div>
+    <button class="button-orange" onclick="selectAll()">すべて選択</button>
+    <button class="button-orange" onclick="deselectAll()" style="background:#ccc; color:#333;">選択を解除</button>
+  </div>
+  <div class="select-box">
+    <h2>口コミの口調を選んでください</h2>
+    <div class="tone-grid">
+      <label class="tone-option"><input type="radio" name="tone" value="ですます調" checked> ですます調</label>
+      <label class="tone-option"><input type="radio" name="tone" value="カジュアル"> カジュアル</label>
+      <label class="tone-option"><input type="radio" name="tone" value="フレンドリー"> フレンドリー</label>
+      <label class="tone-option"><input type="radio" name="tone" value="しっかり敬語"> しっかり敬語</label>
+    </div>
+  </div>
+  <div class="select-box">
+    <h2>自由記述（任意）</h2>
+    <textarea id="free-input" placeholder="ご自由にご記入ください"></textarea>
+  </div>
+  <div class="select-box">
+    <button class="button-orange" onclick="generateReview()">口コミを作成する</button>
+    <button class="button-orange" onclick="copyReview()">コピーする</button>
+    <div id="output"></div>
+  </div>
+  <div class="footer-links">
+    <p>作成した口コミを以下のリンクから投稿できます：</p>
+    <p>
+      <a href="https://www.google.co.jp/search?q=もみ徳姪浜店+クチコミ">PC・Androidはこちら</a><br>
+      <a href="https://www.google.com/gasearch?q=もみ徳姪浜店+レビュー&source=sh/x/gs/m2/5#ebo=1">iPhoneはこちら（※先に星を選択してください）</a>
+    </p>
+  </div>
+  <script>
+    const gender = "male";
+    function generateReview() {
+      const therapist = document.querySelector('input[name="therapist"]:checked')?.value || "不明";
+      const tone = document.querySelector('input[name="tone"]:checked')?.value;
+      const selected = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
+      const freeText = document.getElementById("free-input").value;
+
+      const shuffled = selected.sort(() => 0.5 - Math.random());
+      let review = buildReview(gender, tone, shuffled, therapist);
+      if (freeText.trim()) {
+        review += "\n" + freeText.trim();
+      }
+      document.getElementById("output").textContent = review;
+    }
+    function copyReview() {
+      const reviewText = document.getElementById("output").textContent;
+      if (reviewText) {
+        navigator.clipboard.writeText(reviewText).then(() => {
+          alert("コピーしました！");
+        });
+      }
+    }
+    function selectAll() {
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
+    }
+    function deselectAll() {
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    }
+  </script>
+
 </body>
 </html>
