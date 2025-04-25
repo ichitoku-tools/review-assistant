@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>もみ徳｜口コミアシスタント（男性版）</title>
+  <style>
+    :root {
+      --main-color: #64b5f6;
+      --accent-color: #42a5f5;
+      --bg-color: #f0f8ff;
+      --text-color: #333;
+      --light-bg: #e3f2fd;
+      --border-color: #90caf9;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 1em;
+      text-align: center;
+      word-break: break-word;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+    .top-hero {
+      background: #90caf9;
+      color: #fff;
+      padding: 2.5em 1em 1.5em;
+      border-radius: 0 0 24px 24px;
+    }
+    .top-icon img {
+      width: 64px;
+      height: 64px;
+      object-fit: cover;
+      border-radius: 50%;
+      background: #fff;
+      padding: 0.5em;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .top-title {
+      font-size: 1.6rem;
+      margin: 0.8em 0 0.3em;
+      font-weight: bold;
+    }
+    .top-sub {
+      font-size: 0.9rem;
+      opacity: 0.95;
+    }
+    .select-box {
+      background: #fff;
+      border: 2px solid var(--border-color);
+      border-radius: 16px;
+      max-width: 640px;
+      margin: 1.5em auto;
+      padding: 1.5em;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .flex-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6em;
+      margin-bottom: 1em;
+    }
+    .button-orange {
+      background: var(--main-color);
+      color: white;
+      border: none;
+      padding: 0.8em 1.2em;
+      border-radius: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 120px;
+    }
+    .button-orange:hover {
+      background: var(--accent-color);
+    }
+    #free-input {
+      width: calc(100% - 2em);
+      max-width: 600px;
+      height: 80px;
+      padding: 0.7em;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    #output {
+      background: #f5fbff;
+      border: 2px dashed var(--accent-color);
+      padding: 1em;
+      border-radius: 12px;
+      white-space: pre-wrap;
+      margin-top: 1em;
+      max-width: 600px;
+      min-height: 4em;
+      font-size: 1rem;
+      color: #444;
+    }
+    select {
+      font-size: 1rem;
+      padding: 0.6em;
+      border-radius: 8px;
+      border: 2px solid var(--border-color);
+      background: #e8f4fd;
+      width: 80%;
+      max-width: 320px;
+    }
+    select:focus {
+      outline: none;
+      border-color: var(--main-color);
+      background: #f0f8ff;
+    }
+    .badge {
+      background: #bbdefb;
+      margin: 2px;
+      padding: 4px 8px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-hero">
+  <div class="top-icon">
+    <img src="male.png" alt="男性アイコン">
+  </div>
+  <h1 class="top-title">口コミアシスタント</h1>
+  <div class="top-sub">カンタン操作で、あなたの想いを届けやすく。</div>
+</div>
+
+<div class="select-box">
+  <h2>担当スタッフを選んでください</h2>
+  <select id="staff-select">
+    <option value="">選択してください</option>
+    <option value="横田">横田</option>
+    <option value="桜井">桜井</option>
+    <option value="米倉">米倉</option>
+    <option value="木田">木田</option>
+    <option value="不明">不明</option>
+  </select>
+</div>
+
+<div class="select-box">
+  <h2>施術後に感じたこと</h2>
+  <p style="font-size: 0.85rem; color: #777;">※最大3つまで選択できます</p>
+  <select id="impression-select" multiple style="height: 8em;">
+    <option value="コリに的確">コリに的確</option>
+    <option value="力強い">力強い</option>
+    <option value="動作が楽に">動作が楽に</option>
+    <option value="スッキリ">スッキリ</option>
+    <option value="丁寧な接客">丁寧な接客</option>
+    <option value="ワザが凄い">ワザが凄い</option>
+  </select>
+  <div id="impression-display" style="margin-top: 1em; font-size: 0.9rem;"></div>
+</div>
+
+<div class="select-box">
+  <h2>口コミの口調を選んでください</h2>
+  <select id="tone-select">
+    <option value="ですます調" selected>ですます調</option>
+    <option value="カジュアル">カジュアル</option>
+    <option value="フレンドリー">フレンドリー</option>
+    <option value="しっかり敬語">しっかり敬語</option>
+  </select>
+</div>
+
+<div class="select-box">
+  <h2>口コミ作成・コピー</h2>
+  <div class="flex-buttons">
+    <button class="button-orange" onclick="generateReview()">口コミを作成する</button>
+    <button class="button-orange" onclick="copyReview()">コピーする</button>
+  </div>
+  <div id="output"></div>
+</div>
+
+<div class="select-box">
+  <h2>投稿リンクはこちら</h2>
+  <div class="flex-buttons">
+    <a href="https://www.google.co.jp/search?q=もみ徳姪浜店+クチコミ" target="_blank" class="button-orange">PC・Android</a>
+    <a href="https://www.google.com/gasearch?q=もみ徳姪浜店+レビュー&source=sh/x/gs/m2/5#ebo=1" target="_blank" class="button-orange">iPhone</a>
+  </div>
+  <p style="font-size: 0.75rem; color: #888; margin-top: 0.5em;">※iPhoneの方は先に「★（星）」をタップしてください。</p>
+</div>
+
+<script>
+const naturalPhrases = {
+  "コリに的確": ["ピンポイントで効いた感じがしました。", "狙ったところにしっかり当たって満足です。", "狙い通りの箇所にアプローチしてくれました。"],
+  "力強い": ["圧がしっかりしていて安心感がありました。", "しっかりと深くほぐしてもらえました。", "体の芯に届く感じの圧でした。"],
+  "動作が楽に": ["肩や腰の動きがスムーズになりました。", "可動域が広がった感じがしました。", "施術後、体が軽く感じました。"],
+  "スッキリ": ["頭がスッキリしてリフレッシュできました。", "モヤモヤが取れて爽快感がありました。", "全体的に気分が明るくなりました。"],
+  "丁寧な接客": ["親身な対応で安心感がありました。", "終始リラックスできる接客でした。", "細やかな気配りに感動しました。"],
+  "ワザが凄い": ["技術力の高さを感じました。", "体の状態を見極めた的確な施術でした。", "プロフェッショナルな技術を感じました。"]
+};
+
+const impressionSelect = document.getElementById("impression-select");
+const impressionDisplay = document.getElementById("impression-display");
+
+impressionSelect.addEventListener("input", () => {
+  const options = Array.from(impressionSelect.options);
+  const selected = options.filter(opt => opt.selected);
+
+  if (selected.length >= 3) {
+    options.forEach(opt => { if (!opt.selected) opt.disabled = true; });
+  } else {
+    options.forEach(opt => { opt.disabled = false; });
+  }
+
+  const values = selected.map(opt => opt.value);
+  impressionDisplay.innerHTML = values.length
+    ? "選択中：" + values.map(val => `<span class='badge'>${val}</span>`).join("")
+    : "";
+});
+
+function generateReview() {
+  const therapist = document.getElementById("staff-select").value || "不明";
+  const tone = document.getElementById("tone-select").value;
+  const selected = Array.from(impressionSelect.selectedOptions).map(opt => opt.value);
+  const freeText = document.getElementById("free-input")?.value.trim();
+  const phrases = selected.map(item => {
+    const list = naturalPhrases[item];
+    return list ? list[Math.floor(Math.random() * list.length)] : item;
+  });
+
+  let review = (therapist === "不明" ? "施術を受けました。" : `${therapist}さんに施術をお願いしました。`) + "\n";
+  review += phrases.join(" ") + "\n";
+
+  const outro = {
+    "ですます調": "またお願いしたいと思います。",
+    "カジュアル": "また行きたいなーって思いました！",
+    "フレンドリー": "またお願いしまーす！",
+    "しっかり敬語": "次回もぜひお願いしたく存じます。"
+  }[tone] || "";
+
+  review += outro;
+
+  if (freeText) {
+    review += "\n" + freeText;
+  }
+
+  document.getElementById("output").textContent = review;
+}
+
+function copyReview() {
+  const reviewText = document.getElementById("output").textContent;
+  if (reviewText) {
+    navigator.clipboard.writeText(reviewText).then(() => {
+      alert("コピーしました！");
+    });
+  }
+}
+</script>
+
+</body>
+</html>
